@@ -2,7 +2,7 @@ package gexpect
 
 import (
 	"bufio"
-	"github.com/shavac/gexpect/pty"
+	"github.com/jshost/gexpect/pty"
 	"io"
 	"os"
 	"os/exec"

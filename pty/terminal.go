@@ -1,6 +1,7 @@
 package pty
 
 import (
+	"github.com/jshost/gexpect"
 	"os"
 )
 
@@ -8,7 +9,7 @@ type Terminal struct {
 	Pty      *os.File
 	Tty      *os.File
 	Recorder []*os.File
-	oldState State
+	oldState gexpect.State
 }
 
 func (t *Terminal) Write(b []byte) (n int, err error) {
@@ -18,7 +19,7 @@ func (t *Terminal) Write(b []byte) (n int, err error) {
 func (t *Terminal) Read(b []byte) (n int, err error) {
 	n, err = t.Pty.Read(b)
 	for _, r := range t.Recorder {
-		if n, err := r.Write(b) ; err != nil {
+		if n, err := r.Write(b); err != nil {
 			return n, err
 		}
 	}

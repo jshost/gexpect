@@ -1,10 +1,10 @@
 package pty
 
 import (
+	"errors"
 	"os"
 	"syscall"
 	"unsafe"
-	"errors"
 )
 
 const (
